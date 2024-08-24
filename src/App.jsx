@@ -11,6 +11,7 @@ import LoginSignup from './pages/LoginSignup'
 import Wishlist from './pages/Wishlist'
 import PageNotFound from './pages/PageNotFound'
 import Offers from './components/Offers'
+import Navbar from './components/Navbar'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
     <>
       <BrowserRouter>
         <Offers/>
+        <Navbar/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/home' element={<Home/>}/>
