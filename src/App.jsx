@@ -10,12 +10,14 @@ import Contact from './pages/Contact'
 import LoginSignup from './pages/LoginSignup'
 import Wishlist from './pages/Wishlist'
 import PageNotFound from './pages/PageNotFound'
+import Offers from './components/Offers'
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+        <Offers/>
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/home' element={<Home/>}/>
