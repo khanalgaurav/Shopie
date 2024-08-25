@@ -23,17 +23,17 @@ const Navbar = () => {
                 </div>
             </NavLink>
             <div className={` `}>
-                <ul className={`${toggleMenu?'w-1/2 md:w-auto':'w-0 md:w-auto'} transition-all ease-in-out duration-500 overflow-hidden gap-10 md:flex absolute top-0 right-0 bg-orange md:bg-white h-screen md:h-auto md:static md:text-lg text-xl md:p-0 md:m-0 `} >
+                <ul className={`${toggleMenu?'w-1/2 md:w-auto':'w-0 md:w-auto'} transition-all ease-in-out duration-500 overflow-hidden gap-10 md:flex fixed onClick={handleMenu} top-0 right-0 bg-orange md:bg-white h-screen md:h-auto md:static md:text-lg text-xl md:p-0 md:m-0 `} >
                     <div onClick={handleMenu} className='flex justify-end'>
                         <RxCross2 className='text-5xl md:hidden'/>
                     </div>
-                    <NavLink to={'/'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Home</li></NavLink>
-                    <NavLink to={'/contact'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Contact</li></NavLink>
-                    <NavLink to={'/about'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>About</li></NavLink>
-                    <NavLink to={'/login'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Signin</li></NavLink>
+                    <NavLink onClick={handleMenu} to={'/'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Home</li></NavLink>
+                    <NavLink onClick={handleMenu} to={'/contact'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Contact</li></NavLink>
+                    <NavLink onClick={handleMenu} to={'/about'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>About</li></NavLink>
+                    <NavLink onClick={handleMenu} to={'/login'} className={({isActive})=>`${isActive?'text-black md:text-orange':'text-white md:text-black'}`}><li className='md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]'>Signin</li></NavLink>
                     <div className='md:hidden flex mt-10 justify-around text-white text-5xl gap-3 items-center'>
-                    <NavLink to={'/wishlist'}><CiHeart/></NavLink>
-                    <NavLink to={'/cart'}><IoCartOutline/></NavLink>
+                    <NavLink onClick={handleMenu} to={'/wishlist'}><CiHeart/></NavLink>
+                    <NavLink onClick={handleMenu} to={'/cart'}><IoCartOutline/></NavLink>
                 </div>
                 </ul>
             </div>
