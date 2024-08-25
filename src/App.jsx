@@ -12,6 +12,7 @@ import Wishlist from './pages/Wishlist'
 import PageNotFound from './pages/PageNotFound'
 import Offers from './components/Offers'
 import Navbar from './components/Navbar'
+import { Footer } from './components/Footer'
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route path='/wishlist' element={<Wishlist/>}/>
           <Route path='/*' element={<PageNotFound/>}/>         
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </>
   )
