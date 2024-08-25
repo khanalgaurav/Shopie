@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 export const Footer = () => {
   return (
     <div className='bg-black text-white px-2 pt-1 flex flex-col justify-center items-center text-center md:text-left text'>
-        <div className=' md:flex md:justify-between md:py-10 w-screen md:px-32'>
+        <div className=' md:flex md:justify-between md:py-10 md:w-screen md:px-32'>
             <div className='mb-10 text-lg'>
                 <NavLink to={'/'}><h1 className='font-bold mb-5 text-4xl'>SHOPIE</h1></NavLink>
                 <h3 className='underline text-2xl'>Subscribe</h3>
