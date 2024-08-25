@@ -13,6 +13,7 @@ import PageNotFound from './pages/PageNotFound'
 import Offers from './components/Offers'
 import Navbar from './components/Navbar'
 import { Footer } from './components/Footer'
+import ProductCategory from './pages/ProductCategory'
 
 function App() {
 
@@ -30,6 +31,10 @@ function App() {
           <Route path='/user/account' element={<Account/>}/>
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/login' element={<LoginSignup/>}/>
+          <Route path='/category/furniture' element={<ProductCategory category="furniture"/>}/>
+          <Route path='/category/beauty' element={<ProductCategory category="beauty"/>}/>
+          <Route path='/category/fragrances' element={<ProductCategory category="fragrances"/>}/>
+          <Route path='/category/groceries' element={<ProductCategory category="groceries"/>}/>
           <Route path='/product' element={<ProductDetails/>}>
             <Route path=':productId' element={<ProductDetails/>}/>
           </Route>
