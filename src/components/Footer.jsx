@@ -4,7 +4,7 @@ import { FaLink, FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { PiInstagramLogoFill } from "react-icons/pi";
 import { FaLinkedin } from "react-icons/fa";
-import Qr from '/public/qr.png';
+import Qr from '/qr.png';
 import { NavLink } from 'react-router-dom';
 export const Footer = () => {
   return (
