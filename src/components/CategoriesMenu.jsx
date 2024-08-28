@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 const CategoriesMenu = () => {
   return (
-    <div className='border-r border-gray-300'>
+    <div className='border-r md:w-1/4 border-gray-300'>
         <div className='pt-5 pr-5'>
             <ul className='flex flex-wrap gap-3 justify-center border-red-500 md:block'>
                 <NavLink to={'/category/beauty'}><li className='p-1.5 border border-gray-300 md:border-none hover:bg-orange hover:text-white'>Beauty & Fashion</li></NavLink>
