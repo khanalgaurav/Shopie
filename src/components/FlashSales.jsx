@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import ItemCard from './ItemCard'
+import { useGlobalContext } from './ShopContext'
+import { GrCaretNext } from 'react-icons/gr'
+import { GrCaretPrevious } from 'react-icons/gr'
 
 const FlashSales = () => {
     const [endCountdownDate, setEndCountdownDate] = useState(
@@ -11,6 +15,10 @@ const FlashSales = () => {
     const [hrs, setHrs] = useState(0)
     const [mins, setMins] = useState(0)
     const [secs, setSecs] = useState(0)
+
+    const { allProducts, isLoading, error } = useGlobalContext()
+
+    const flashProducts = allProducts.slice(5, 14)
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -31,9 +39,18 @@ const FlashSales = () => {
         return () => clearInterval(interval)
     }, [endCountdownDate])
 
+    const slideLeft = () => {
+        let slider = document.getElementById('slider')
+        slider.scrollLeft = slider.scrollLeft - 500
+    }
+    const slideRight = () => {
+        let slider = document.getElementById('slider')
+        slider.scrollLeft = slider.scrollLeft + 500
+    }
+
     return (
         <div>
-            <div className="flex justify-between md:justify-normal md:gap-40 items-center">
+            <div className="flex justify-between md:justify-normal relative md:gap-40 items-center">
                 <div className="flex flex-col gap-2">
                     <div className="flex gap-3 items-center">
                         <div className="h-8 w-4 rounded-md bg-orange"></div>
@@ -70,8 +87,41 @@ const FlashSales = () => {
                         <p className="font-bold text-xl md:text-2xl">{secs}</p>
                     </div>
                 </div>
+                <div className="md:flex gap-20 absolute top-5 right-20 hidden ">
+                    <div
+                        onClick={slideLeft}
+                        className="px-2 py-2 bg-gray-200 rounded-full"
+                    >
+                        <GrCaretPrevious className="text-xl" />
+                    </div>
+                    <div
+                        onClick={slideRight}
+                        className="px-2 py-2 bg-gray-200 rounded-full"
+                    >
+                        <GrCaretNext className="text-xl" />
+                    </div>
+                </div>
             </div>
-            <div></div>
+
+            <div
+                id="slider"
+                className="flex md:flex-row flex-col items-center gap-5 my-5 overflow-x-scroll scroll scroll-smooth scrollbar-hide"
+            >
+                {flashProducts.map((item, i) => {
+                    return (
+                        <div key={i}>
+                            <ItemCard
+                                key={i}
+                                name={item.title}
+                                reviews={item.reviews.length}
+                                price={item.price}
+                                thumbnail={item.thumbnail}
+                                discount={item.discountPercentage}
+                            />
+                        </div>
+                    )
+                })}
+            </div>
         </div>
     )
 }
