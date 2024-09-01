@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaStar } from 'react-icons/fa6'
 import { FaStarHalf } from 'react-icons/fa6'
-import { CiHeart } from 'react-icons/ci'
-import { IoEyeOutline } from 'react-icons/io5'
+import { GoHeart, GoHeartFill } from 'react-icons/go'
+import { BsEye, BsEyeFill } from 'react-icons/bs'
 import { useGlobalContext } from './ShopContext'
 
-const ItemCard = ({ name, reviews, price, thumbnail, discount }) => {
-    const { allProducts, isLoading, error } = useGlobalContext()
+const ItemCard = ({
+    name,
+    reviews,
+    price,
+    thumbnail,
+    discount,
+    marketPrice,
+    handleWatchLater,
+    handleWishlist,
+    id,
+    rating,
+}) => {
+    const { allProducts, isLoading, error, wish, watchLater } =
+        useGlobalContext()
+    // Generate an array of stars based on the rating
+    const stars = Array.from({ length: rating }, (_, i) => (
+        <FaStar key={i} className="text-yellow-400 text-lg" />
+    ))
     return (
         <div className="group w-52 ">
             <div className="border rounded-md w-fit relative overflow-hidden">
@@ -14,11 +30,17 @@ const ItemCard = ({ name, reviews, price, thumbnail, discount }) => {
                 <div className="absolute top-2 left-2 bg-orange rounded-md text-[12px] text-white px-2">
                     -{discount}%
                 </div>
-                <div className="absolute top-2 right-2 bg-orange px-1 py-1 text-white font-bold text-xl rounded-full">
-                    <CiHeart />
+                <div
+                    onClick={handleWishlist}
+                    className={`absolute top-2 right-2 bg-orange px-1 py-1 text-white text-xl rounded-full`}
+                >
+                    {wish[id] ? <GoHeartFill /> : <GoHeart />}
                 </div>
-                <div className="absolute top-10 right-2 bg-orange px-1 py-1 text-white font-bold text-xl rounded-full">
-                    <IoEyeOutline />
+                <div
+                    onClick={handleWatchLater}
+                    className={`absolute top-10 right-2 bg-orange px-1 py-1 text-white text-xl rounded-full `}
+                >
+                    {watchLater[id] ? <BsEyeFill /> : <BsEye />}
                 </div>
                 <div>
                     <button className="transition-all ease-in-out duration-500 text-center w-full border border-black absolute group-hover:-translate-y-0 translate-y-10 bottom-0 bg-black text-white py-1 rounded-b-md">
@@ -33,15 +55,11 @@ const ItemCard = ({ name, reviews, price, thumbnail, discount }) => {
                         ${price}
                     </span>
                     <span className="line-through text-gray-500 text-lg font-bold">
-                        $160
+                        ${marketPrice}
                     </span>
                 </p>
                 <div className="flex items-center">
-                    <FaStar className="text-yellow-400 text-lg" />
-                    <FaStar className="text-yellow-400 text-lg" />
-                    <FaStar className="text-yellow-400 text-lg" />
-                    <FaStar className="text-yellow-400 text-lg" />
-
+                    {stars}
                     <p className="text-gray-500">({reviews})</p>
                 </div>
             </div>

@@ -9,6 +9,9 @@ const AppContextProvider = ({ children }) => {
     const [error, setError] = useState()
     const baseUrl = 'https://dummyjson.com'
 
+    const [wish, setWish] = useState({})
+    const [watchLater, setWatchLater] = useState({})
+
     useEffect(() => {
         const fetchProducts = async () => {
             setIsLoading(true)
@@ -32,6 +35,10 @@ const AppContextProvider = ({ children }) => {
                 allProducts,
                 isLoading,
                 error,
+                wish,
+                setWish,
+                watchLater,
+                setWatchLater,
             }}
         >
             {children}
