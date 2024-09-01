@@ -16,9 +16,13 @@ export const Carousel = () => {
         return () => clearInterval(interval)
     }, [currentDisplay])
 
+    const handleCarouselClick = (i) => {
+        setCurrentDisplay(i)
+    }
+
     return (
-        <div className="border relative border-green-500 md:h-80 h-40 overflow-hidden md:w-full m-10 md:mr-0">
-            <div className="bg-black h-full w-full opacity-40 absolute top-0 left-0"></div>
+        <div className="relative md:h-80 h-40 overflow-hidden md:w-full m-10 md:mr-0 md:mb-0">
+            <div className="bg-black h-full w-full opacity-15 absolute top-0 left-0"></div>
             <img
                 className="object-cover object-center h-full w-full"
                 src={bannerList[currentDisplay].img}
@@ -28,10 +32,11 @@ export const Carousel = () => {
                 {bannerList.map((item) => {
                     return (
                         <div
+                            onClick={() => handleCarouselClick(item.id)}
                             key={item.id}
-                            className={`h-2 w-2  ${
+                            className={`h-2.5 w-2.5 cursor-pointer ${
                                 item.id === currentDisplay
-                                    ? 'bg-white'
+                                    ? 'bg-white scale-125'
                                     : 'bg-gray-500'
                             } rounded-full`}
                         ></div>
