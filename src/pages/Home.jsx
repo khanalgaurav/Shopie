@@ -2,6 +2,7 @@ import React from 'react'
 import CategoriesMenu from '../components/CategoriesMenu'
 import { Carousel } from '../components/Carousel'
 import FlashSales from '../components/FlashSales'
+import BrowseByCategory from '../components/BrowseByCategory'
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
                 <Carousel />
             </div>
             <FlashSales />
+            <BrowseByCategory />
         </div>
     )
 }

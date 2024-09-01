@@ -5,6 +5,7 @@ const AppContext = React.createContext()
 
 const AppContextProvider = ({ children }) => {
     const [allProducts, setAllProducts] = useState([])
+    const [categories, setCategories] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
     const baseUrl = 'https://dummyjson.com'
@@ -28,6 +29,23 @@ const AppContextProvider = ({ children }) => {
         fetchProducts()
     }, [])
 
+    useEffect(() => {
+        const fetchCategories = async () => {
+            setIsLoading(true)
+            try {
+                const res = await fetch(`${baseUrl}/products/category-list`)
+                const data = await res.json()
+
+                setCategories(data)
+            } catch (e) {
+                setError(e)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        fetchCategories()
+    }, [])
+
     return (
         <AppContext.Provider
             value={{
@@ -39,6 +57,7 @@ const AppContextProvider = ({ children }) => {
                 setWish,
                 watchLater,
                 setWatchLater,
+                categories,
             }}
         >
             {children}
