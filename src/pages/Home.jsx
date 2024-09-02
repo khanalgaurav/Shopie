@@ -3,6 +3,7 @@ import CategoriesMenu from '../components/CategoriesMenu'
 import { Carousel } from '../components/Carousel'
 import FlashSales from '../components/FlashSales'
 import BrowseByCategory from '../components/BrowseByCategory'
+import BestSellingProducts from '../components/BestSellingProducts'
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
             </div>
             <FlashSales />
             <BrowseByCategory />
+            <BestSellingProducts />
         </div>
     )
 }
