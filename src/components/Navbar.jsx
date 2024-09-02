@@ -13,14 +13,16 @@ const Navbar = () => {
         setToggleMenu(!toggleMenu)
     }
     return (
-        <div className="border-b border-gray-300 md:pt-8 flex items-center py-2 md:pb-3 overflow-hidden">
+        <nav className="border-b border-gray-300 md:pt-8 flex items-center py-2 md:pb-3 overflow-hidden">
             <div className="flex md:mx-32 justify-between items-center px-1 w-screen">
                 <NavLink to={'/'}>
                     <div>
-                        <p className="md:text-3xl font-bold text-2xl">SHOPIE</p>
+                        <h1 className="md:text-3xl font-bold text-2xl">
+                            SHOPIE
+                        </h1>
                     </div>
                 </NavLink>
-                <div className={` `}>
+                <section>
                     <ul
                         className={`${
                             toggleMenu ? 'w-1/2 md:w-auto' : 'w-0 md:w-auto'
@@ -98,9 +100,9 @@ const Navbar = () => {
                             </NavLink>
                         </div>
                     </ul>
-                </div>
+                </section>
 
-                <div className="md:flex justify-around gap-5 items-center">
+                <section className="md:flex justify-around gap-5 items-center">
                     <div className="flex bg-[#f5f5f5] p-2">
                         <input
                             className="bg-transparent w-56 focus:outline-none"
@@ -117,12 +119,12 @@ const Navbar = () => {
                             <IoCartOutline />
                         </NavLink>
                     </div>
-                </div>
+                </section>
                 <div onClick={handleMenu} className="block md:hidden">
                     <IoIosMenu className="text-4xl" />
                 </div>
             </div>
-        </div>
+        </nav>
     )
 }
 

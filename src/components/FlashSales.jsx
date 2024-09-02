@@ -70,17 +70,17 @@ const FlashSales = () => {
 
     return (
         <div className="border-b border-gray-300 mt-20 mb-10">
-            <div className="flex justify-between md:justify-normal relative md:gap-40 items-center">
+            <header className="flex justify-between md:justify-normal relative md:gap-40 items-center">
                 <div className="flex flex-col gap-2">
                     <div className="flex gap-3 items-center">
                         <div className="h-8 w-4 rounded-md bg-orange"></div>
-                        <p className="text-orange font-bold ">Today's</p>
+                        <h5 className="text-orange font-bold ">Today's</h5>
                     </div>
-                    <p className="md:text-3xl text-2xl font-bold">
+                    <h1 className="md:text-3xl text-2xl font-bold">
                         Flash Sales
-                    </p>
+                    </h1>
                 </div>
-                <div className="flex items-end gap-3">
+                <time className="flex items-end gap-3">
                     <div>
                         <p className="text-sm">Days</p>
                         <p className="font-bold text-xl md:text-2xl">{days}</p>
@@ -106,7 +106,7 @@ const FlashSales = () => {
                         <p className="text-sm">Secs</p>
                         <p className="font-bold text-xl md:text-2xl">{secs}</p>
                     </div>
-                </div>
+                </time>
                 <div className="md:flex gap-20 absolute top-5 right-20 hidden ">
                     <div
                         onClick={slideLeft}
@@ -121,9 +121,9 @@ const FlashSales = () => {
                         <GrCaretNext className="text-xl" />
                     </div>
                 </div>
-            </div>
+            </header>
 
-            <div
+            <section
                 id="slider"
                 className="flex md:flex-row flex-col items-center gap-7 my-8 overflow-x-scroll scroll scroll-smooth scrollbar-hide"
             >
@@ -152,7 +152,7 @@ const FlashSales = () => {
                         </div>
                     )
                 })}
-            </div>
+            </section>
             <div className="flex justify-center">
                 <button className="bg-orange px-4 py-2 mb-10 mt-2 text-white rounded-sm">
                     View All Products

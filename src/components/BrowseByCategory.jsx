@@ -31,16 +31,16 @@ const BrowseByCategory = () => {
     }, [])
     const category = categories.slice(0, 8)
     return (
-        <div className="relative border-b border-gray-300 py-10 m-5">
-            <div className="flex justify-between md:justify-normal relative md:gap-40 items-center">
+        <section className="relative border-b border-gray-300 py-10 m-5">
+            <header className="flex justify-between md:justify-normal relative md:gap-40 items-center">
                 <div className="flex flex-col gap-2">
                     <div className="flex gap-3 items-center">
                         <div className="h-8 w-4 rounded-md bg-orange"></div>
-                        <p className="text-orange font-bold ">Categories</p>
+                        <h5 className="text-orange font-bold ">Categories</h5>
                     </div>
-                    <p className="md:text-3xl text-2xl font-bold">
+                    <h1 className="md:text-3xl text-2xl font-bold">
                         Browse By Categories
-                    </p>
+                    </h1>
                 </div>
                 <div className="md:flex gap-20 absolute top-5 right-20 hidden ">
                     <div
@@ -56,9 +56,9 @@ const BrowseByCategory = () => {
                         <GrCaretNext className="text-xl" />
                     </div>
                 </div>
-            </div>
+            </header>
 
-            <div
+            <section
                 id="slider-category"
                 className="flex md:flex-row flex-col items-center gap-7 my-8 overflow-x-scroll scroll scroll-smooth scrollbar-hide"
             >
@@ -73,8 +73,8 @@ const BrowseByCategory = () => {
                     )
                 })}
                 {/* <CategoryCard icon="E" title="Electronics" /> */}
-            </div>
-        </div>
+            </section>
+        </section>
     )
 }
 

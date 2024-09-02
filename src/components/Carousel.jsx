@@ -21,7 +21,7 @@ export const Carousel = () => {
     }
 
     return (
-        <div className="relative md:h-80 h-40 overflow-hidden md:w-full m-10 md:mr-0 md:mb-0">
+        <article className="relative md:h-80 h-40 overflow-hidden md:w-full m-10 md:mr-0 md:mb-0">
             <div className="bg-black h-full w-full opacity-15 absolute top-0 left-0"></div>
             <img
                 className="object-cover object-center h-full w-full"
@@ -43,6 +43,6 @@ export const Carousel = () => {
                     )
                 })}
             </div>
-        </div>
+        </article>
     )
 }

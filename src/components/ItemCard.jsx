@@ -24,8 +24,8 @@ const ItemCard = ({
         <FaStar key={i} className="text-yellow-400 text-lg" />
     ))
     return (
-        <div className="group w-52 ">
-            <div className="border rounded-md w-fit relative overflow-hidden">
+        <article className="group w-52 ">
+            <section className="border rounded-md w-fit relative overflow-hidden">
                 <img className="h-52 w-52" src={thumbnail} alt={name} />
                 <div className="absolute top-2 left-2 bg-orange rounded-md text-[12px] text-white px-2">
                     -{discount}%
@@ -47,9 +47,11 @@ const ItemCard = ({
                         Add To Cart
                     </button>
                 </div>
-            </div>
-            <div className="flex flex-col gap-1 my-1">
-                <p className="text-lg font-bold">{name.slice(0, 19) + `...`}</p>
+            </section>
+            <section className="flex flex-col gap-1 my-1">
+                <h2 className="text-lg font-bold">
+                    {name.slice(0, 19) + `...`}
+                </h2>
                 <p className="flex gap-5">
                     <span className="text-orange text-lg font-bold">
                         ${price}
@@ -62,8 +64,8 @@ const ItemCard = ({
                     {stars}
                     <p className="text-gray-500">({reviews})</p>
                 </div>
-            </div>
-        </div>
+            </section>
+        </article>
     )
 }
 
