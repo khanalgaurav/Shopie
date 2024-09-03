@@ -8,7 +8,7 @@ import Qr from '/qr.png'
 import { NavLink } from 'react-router-dom'
 export const Footer = () => {
     return (
-        <section className="bg-black text-white px-2 pt-1 flex flex-col justify-center items-center text-center md:text-left text">
+        <footer className="bg-black text-white px-2 pt-1 flex flex-col justify-center items-center text-center md:text-left text">
             <div className=" md:flex md:justify-between md:py-10 md:w-screen md:px-32">
                 <article className="mb-10 text-lg">
                     <NavLink to={'/'}>
@@ -107,6 +107,6 @@ export const Footer = () => {
             <div className="py-5 text-gray-500">
                 <p>&copy; Copyright Gaurav 2024, All rights reserved</p>
             </div>
-        </section>
+        </footer>
     )
 }
