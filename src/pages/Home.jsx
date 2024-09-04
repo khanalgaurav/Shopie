@@ -4,6 +4,7 @@ import { Carousel } from '../components/Carousel'
 import FlashSales from '../components/FlashSales'
 import BrowseByCategory from '../components/BrowseByCategory'
 import BestSellingProducts from '../components/BestSellingProducts'
+import ProductBanner from '../components/ProductBanner'
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <FlashSales />
             <BrowseByCategory />
             <BestSellingProducts />
+            <ProductBanner />
         </div>
     )
 }
