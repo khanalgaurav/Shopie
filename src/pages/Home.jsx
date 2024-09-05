@@ -5,6 +5,7 @@ import FlashSales from '../components/FlashSales'
 import BrowseByCategory from '../components/BrowseByCategory'
 import BestSellingProducts from '../components/BestSellingProducts'
 import ProductBanner from '../components/ProductBanner'
+import OurProducts from '../components/OurProducts'
 
 const Home = () => {
     return (
@@ -17,6 +18,7 @@ const Home = () => {
             <BrowseByCategory />
             <BestSellingProducts />
             <ProductBanner />
+            <OurProducts />
         </div>
     )
 }
