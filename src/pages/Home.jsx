@@ -6,6 +6,7 @@ import BrowseByCategory from '../components/BrowseByCategory'
 import BestSellingProducts from '../components/BestSellingProducts'
 import ProductBanner from '../components/ProductBanner'
 import OurProducts from '../components/OurProducts'
+import NewArrival from '../components/NewArrival'
 
 const Home = () => {
     return (
@@ -19,6 +20,7 @@ const Home = () => {
             <BestSellingProducts />
             <ProductBanner />
             <OurProducts />
+            <NewArrival />
         </div>
     )
 }
