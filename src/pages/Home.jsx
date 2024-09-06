@@ -7,6 +7,7 @@ import BestSellingProducts from '../components/BestSellingProducts'
 import ProductBanner from '../components/ProductBanner'
 import OurProducts from '../components/OurProducts'
 import NewArrival from '../components/NewArrival'
+import Features from '../components/Features'
 
 const Home = () => {
     return (
@@ -21,6 +22,7 @@ const Home = () => {
             <ProductBanner />
             <OurProducts />
             <NewArrival />
+            <Features />
         </div>
     )
 }
