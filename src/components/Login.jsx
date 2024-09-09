@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import loginImage from '../assets/login-image.png'
 import { FcGoogle } from 'react-icons/fc'
 import { NavLink } from 'react-router-dom'
 const LoginSignup = () => {
     const [loginStatus, setLoginStatus] = useState(true)
+    const [userEmail, setUserEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [userName, setUserName] = useState('')
 
     return (
         <section className="md:my-8 my-3 md:flex-row flex-col flex gap-10 md:gap-32 items-center">
@@ -20,11 +23,19 @@ const LoginSignup = () => {
                     <h5>Enter your details below</h5>
                     <form className="flex flex-col mt-12" action="">
                         <input
+                            onChange={(e) => {
+                                setUserEmail(e.target.value)
+                            }}
+                            value={userEmail}
                             className="border-b py-1 mb-10 border-gray-400 focus:outline-none"
                             type="text"
                             placeholder="Email or Phone Number"
                         />
                         <input
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}
+                            value={password}
                             className="border-b py-1 mb-2 border-gray-400 focus:outline-none"
                             type="password"
                             placeholder="Password"
@@ -58,16 +69,28 @@ const LoginSignup = () => {
                     <h5>Enter your details below</h5>
                     <form className="flex flex-col mt-12" action="">
                         <input
+                            onChange={(e) => {
+                                setUserName(e.target.value)
+                            }}
+                            value={userName}
                             className="border-b py-1 mb-10 border-gray-400 focus:outline-none"
                             type="text"
                             placeholder="Username"
                         />
                         <input
+                            onChange={(e) => {
+                                setUserEmail(e.target.value)
+                            }}
+                            value={userEmail}
                             className="border-b py-1 mb-10 border-gray-400 focus:outline-none"
                             type="text"
                             placeholder="Email or Phone Number"
                         />
                         <input
+                            onChange={(e) => {
+                                setPassword(e.target.value)
+                            }}
+                            value={password}
                             className="border-b py-1 mb-10 border-gray-400 focus:outline-none"
                             type="password"
                             placeholder="Password"
