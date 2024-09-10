@@ -7,6 +7,53 @@ const LoginSignup = () => {
     const [userEmail, setUserEmail] = useState('')
     const [password, setPassword] = useState('')
     const [userName, setUserName] = useState('')
+    var validRegex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    let numberRegex = /^[0-9]{10}$/
+    let passwordRegex =
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+    const handleLogin = (e) => {
+        e.preventDefault()
+        if (userEmail == '') {
+            alert('Please enter your email or phone number')
+            return false
+        } else if (password == '') {
+            alert('Please your password')
+        } else if (
+            !userEmail.match(validRegex) &&
+            !userEmail.match(numberRegex)
+        ) {
+            alert('Please enter a valid phone number or email address')
+            return false
+        } else {
+            setPassword('')
+            setUserEmail('')
+            return true
+        }
+    }
+
+    const handleSignup = (e) => {
+        e.preventDefault()
+        if (userEmail == '') {
+            alert('Please enter your email or phone number')
+            return false
+        }
+        if (!userEmail.match(validRegex) && !userEmail.match(numberRegex)) {
+            alert('Please enter a valid phone number or email address')
+            return false
+        } else if (password == '') {
+            alert('Please your password')
+        } else if (!password.match(passwordRegex)) {
+            alert(
+                'The Password must Contain:\n Minimum eight characters \n At least one uppercase letter\n One lowercase letter\n One number \n One special character'
+            )
+        } else {
+            setUserEmail('')
+            setPassword('')
+            setUserName('')
+            return true
+        }
+    }
 
     return (
         <section className="md:my-8 my-3 md:flex-row flex-col flex gap-10 md:gap-32 items-center">
@@ -43,10 +90,16 @@ const LoginSignup = () => {
                         <p className="mb-10 text-orange cursor-pointer">
                             Forgot Password ?
                         </p>
-                        <button className="text-white bg-orange px-3 py-2 mb-4">
+                        <button
+                            onClick={handleLogin}
+                            className="text-white bg-orange px-3 py-2 mb-4"
+                        >
                             Login
                         </button>
-                        <button className="border py-2 flex gap-5 justify-center items-center px-3 border-black mb-8">
+                        <button
+                            onClick={(e) => e.preventDefault()}
+                            className="border py-2 flex gap-5 justify-center items-center px-3 border-black mb-8"
+                        >
                             <FcGoogle className="h-6 w-6" />
                             Sign in with Google
                         </button>
@@ -95,10 +148,16 @@ const LoginSignup = () => {
                             type="password"
                             placeholder="Password"
                         />
-                        <button className="text-white bg-orange px-3 py-2 mb-4">
+                        <button
+                            onClick={handleSignup}
+                            className="text-white bg-orange px-3 py-2 mb-4"
+                        >
                             Create Account
                         </button>
-                        <button className="border py-2 flex gap-5 justify-center items-center px-3 border-black mb-8">
+                        <button
+                            onClick={(e) => e.preventDefault()}
+                            className="border py-2 flex gap-5 justify-center items-center px-3 border-black mb-8"
+                        >
                             <FcGoogle className="h-6 w-6" />
                             Sign up with Google
                         </button>
