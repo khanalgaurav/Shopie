@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemCard from './ItemCard'
 import { useGlobalContext } from './ShopContext'
+import { useItemContext } from './ItemsContext'
 
 const FlashSales = () => {
     const {
@@ -12,21 +13,8 @@ const FlashSales = () => {
         watchLater,
         setWatchLater,
     } = useGlobalContext()
-
+    const { handleWishlist, handleWatchLater } = useItemContext()
     const bestSellingProducts = allProducts.slice(12, 21)
-
-    const handleWishlist = (i) => {
-        setWish((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
-    }
-    const handleWatchLater = (i) => {
-        setWatchLater((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
-    }
 
     return (
         <div className="border-b border-gray-300 mt-20 mb-10">

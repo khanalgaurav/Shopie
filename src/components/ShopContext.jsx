@@ -4,12 +4,11 @@ import bannerList from '../assets/BannerList'
 const AppContext = React.createContext()
 
 const AppContextProvider = ({ children }) => {
+    const baseUrl = 'https://dummyjson.com'
     const [allProducts, setAllProducts] = useState([])
     const [categories, setCategories] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState()
-    const baseUrl = 'https://dummyjson.com'
-
     const [wish, setWish] = useState({})
     const [watchLater, setWatchLater] = useState({})
 

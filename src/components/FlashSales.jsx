@@ -3,6 +3,7 @@ import ItemCard from './ItemCard'
 import { useGlobalContext } from './ShopContext'
 import { GrCaretNext } from 'react-icons/gr'
 import { GrCaretPrevious } from 'react-icons/gr'
+import { useItemContext } from './ItemsContext'
 
 const FlashSales = () => {
     const [endCountdownDate, setEndCountdownDate] = useState(
@@ -25,6 +26,7 @@ const FlashSales = () => {
         watchLater,
         setWatchLater,
     } = useGlobalContext()
+    const { handleWishlist, handleWatchLater } = useItemContext()
 
     const flashProducts = allProducts.slice(5, 14)
 
@@ -54,18 +56,6 @@ const FlashSales = () => {
     const slideRight = () => {
         let slider = document.getElementById('slider')
         slider.scrollLeft = slider.scrollLeft + 500
-    }
-    const handleWishlist = (i) => {
-        setWish((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
-    }
-    const handleWatchLater = (i) => {
-        setWatchLater((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
     }
 
     return (
