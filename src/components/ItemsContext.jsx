@@ -1,7 +1,6 @@
 import React, { createContext } from 'react'
 import { useState, useContext } from 'react'
 import { useGlobalContext } from './ShopContext'
-import Wishlist from '../pages/Wishlist'
 const itemContext = createContext(null)
 
 const ItemProvider = ({ children }) => {

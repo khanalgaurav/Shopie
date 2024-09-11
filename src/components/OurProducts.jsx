@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ItemCard from './ItemCard'
 import { useGlobalContext } from './ShopContext'
-
+import { useItemContext } from './ItemsContext'
 const OurProducts = () => {
     const {
         allProducts,
@@ -12,21 +12,9 @@ const OurProducts = () => {
         watchLater,
         setWatchLater,
     } = useGlobalContext()
-
+    const { handleWatchLater, handleWishlist } = useItemContext()
     const ourProducts = allProducts.slice(9, 19)
 
-    const handleWishlist = (i) => {
-        setWish((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
-    }
-    const handleWatchLater = (i) => {
-        setWatchLater((prev) => ({
-            ...prev,
-            [i]: !prev[i],
-        }))
-    }
     return (
         <div className="border-b border-gray-300 mt-20 mb-10">
             <header className="flex justify-between md:justify-normal relative md:gap-40 items-center">
