@@ -11,9 +11,9 @@ const Wishlist = () => {
     console.log(List)
 
     return (
-        <div>
-            <div>
-                wishlist
+        <div className="mx-32 mb-10 mt-5">
+            <h1 className="font-bold text-2xl mb-5">MY WISHLIST</h1>
+            <div className="md:flex-row flex flex-col justify-center flex-wrap gap-5">
                 {List.map((item, i) => {
                     const mPrice = (
                         item.price +
