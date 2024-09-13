@@ -13,33 +13,45 @@ const Wishlist = () => {
     return (
         <div className="mx-32 mb-10 mt-5">
             <h1 className="font-bold text-2xl mb-5">MY WISHLIST</h1>
-            <div className="md:flex-row flex flex-col justify-center flex-wrap gap-5">
-                {List.map((item, i) => {
-                    const mPrice = (
-                        item.price +
-                        item.price * (Math.ceil(item.discountPercentage) / 100)
-                    ).toFixed(2)
-                    return (
-                        <div key={i}>
-                            <ItemCard
-                                key={i}
-                                name={item.title}
-                                reviews={item.reviews.length}
-                                price={item.price}
-                                marketPrice={mPrice}
-                                thumbnail={item.thumbnail}
-                                discount={Math.ceil(item.discountPercentage)}
-                                handleWishlist={() => handleWishlist(item.id)}
-                                handleWatchLater={() =>
-                                    handleWatchLater(item.id)
-                                }
-                                id={item.id}
-                                rating={Math.floor(item.rating)}
-                            />
-                        </div>
-                    )
-                })}
-            </div>
+
+            {List.length == 0 ? (
+                <h2 className="text-3xl font-bold text-center">
+                    Your Wishlist is Empty
+                </h2>
+            ) : (
+                <div className="md:flex-row flex flex-col justify-center flex-wrap gap-5">
+                    {List.map((item, i) => {
+                        const mPrice = (
+                            item.price +
+                            item.price *
+                                (Math.ceil(item.discountPercentage) / 100)
+                        ).toFixed(2)
+                        return (
+                            <div key={i}>
+                                <ItemCard
+                                    key={i}
+                                    name={item.title}
+                                    reviews={item.reviews.length}
+                                    price={item.price}
+                                    marketPrice={mPrice}
+                                    thumbnail={item.thumbnail}
+                                    discount={Math.ceil(
+                                        item.discountPercentage
+                                    )}
+                                    handleWishlist={() =>
+                                        handleWishlist(item.id)
+                                    }
+                                    handleWatchLater={() =>
+                                        handleWatchLater(item.id)
+                                    }
+                                    id={item.id}
+                                    rating={Math.floor(item.rating)}
+                                />
+                            </div>
+                        )
+                    })}
+                </div>
+            )}
         </div>
     )
 }
