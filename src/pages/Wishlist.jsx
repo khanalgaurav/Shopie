@@ -15,7 +15,7 @@ const Wishlist = () => {
             <h1 className="font-bold text-2xl mb-5">MY WISHLIST</h1>
 
             {List.length == 0 ? (
-                <h2 className="text-3xl font-bold text-center">
+                <h2 className="text-3xl font-bold text-center py-20">
                     Your Wishlist is Empty
                 </h2>
             ) : (
