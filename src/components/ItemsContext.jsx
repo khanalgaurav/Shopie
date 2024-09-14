@@ -23,28 +23,9 @@ const ItemProvider = ({ children }) => {
                     return [...prevItems, { id, wishCount: 1 }] // Add item with initial wishCount
                 }
             })
-
-            // const item = wishListItems.find((i) => i.id === id)
-            // if (item) {
-            //     if (item.wishCount === 0) {
-            //         item.wishCount += 1
-            //     } else if (item.wishCount === 1) {
-            //         item.wishCount -= 1
-            //     }
-            //     setWishListItems((prev) => [
-            //         ...prev.filter((i) => i.id !== id),
-            //         item,
-            //     ])
-            // } else {
-            //     wishListItems.push({
-            //         id: id,
-            //         wishCount: 1,
-            //     })
-            // }
         }
         addToWishList(id)
     }
-    console.log(wishListItems)
 
     const handleWatchLater = (i) => {
         setWatchLater((prev) => ({

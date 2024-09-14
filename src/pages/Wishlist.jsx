@@ -8,7 +8,6 @@ const Wishlist = () => {
     const List = allProducts.filter((i) =>
         wishListItems.find((item) => item.id === i.id)
     )
-    console.log(List)
 
     return (
         <div className="mx-32 mb-10 mt-5">
