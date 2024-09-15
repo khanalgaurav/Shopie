@@ -2,7 +2,6 @@ import React from 'react'
 import { FaXTwitter } from 'react-icons/fa6'
 import { PiLinkedinLogo } from 'react-icons/pi'
 import { FiGithub } from 'react-icons/fi'
-import bj from '../assets/Ceo.png'
 
 const EmployeeCard = ({ image, name, title }) => {
     return (
