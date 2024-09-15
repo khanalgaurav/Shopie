@@ -6,8 +6,18 @@ import moneyBag from '../assets/Icon-Moneybag.png'
 import { PiCurrencyCircleDollarLight } from 'react-icons/pi'
 import EmployeeCard from '../components/EmployeeCard'
 import employee from '../assets/employee'
+import { GrCaretNext } from 'react-icons/gr'
+import { GrCaretPrevious } from 'react-icons/gr'
 
 const About = () => {
+    const slideLeft = () => {
+        let slider = document.getElementById('slider-employee')
+        slider.scrollLeft = slider.scrollLeft - 500
+    }
+    const slideRight = () => {
+        let slider = document.getElementById('slider-employee')
+        slider.scrollLeft = slider.scrollLeft + 500
+    }
     return (
         <div className="md:mx-32 mx-10">
             <h5 className="text-gray-500 mt-10">
@@ -88,11 +98,28 @@ const About = () => {
                         <h5 className="text-orange font-bold ">Team Shopie</h5>
                     </div>
                     <h1 className="md:text-3xl text-2xl font-bold">
-                        Staff Members
+                        Staff Members({employee.length})
                     </h1>
                 </div>
+                <div className="md:flex gap-20 absolute top-5 right-20 hidden ">
+                    <div
+                        onClick={slideLeft}
+                        className="px-2 py-2 bg-gray-200 rounded-full"
+                    >
+                        <GrCaretPrevious className="text-xl" />
+                    </div>
+                    <div
+                        onClick={slideRight}
+                        className="px-2 py-2 bg-gray-200 rounded-full"
+                    >
+                        <GrCaretNext className="text-xl" />
+                    </div>
+                </div>
             </header>
-            <div className="flex md:flex-row flex-col justify-between items-center gap-10 mt-10 mb-20">
+            <div
+                id="slider-employee"
+                className="flex md:flex-row flex-col justify-between items-center gap-10 mt-10 mb-20 overflow-x-scroll scroll-smooth scrollbar-hide"
+            >
                 {employee.map((item, i) => {
                     return (
                         <EmployeeCard

@@ -3,6 +3,7 @@ import bijay from '../assets/bjceo.png'
 import gaurav from '../assets/dev.png'
 import rukesh from './product-designer.png'    
 import chaman from './project-manager.png'
+import rajaul from './network-engineer.png'
 let bannerList = [
     {
         id: 0,
@@ -24,15 +25,23 @@ let bannerList = [
     },
     {
         id: 3,
-        title : 'Product Designer',
-        name:'Rukesh Khatiwada',
-        img : rukesh
-    },
-    {
-        id: 4,
         title : 'Project Manager',
         name:'Chaman Budathoki',
         img : chaman
+        
     },
+    {
+        id: 4,
+        title : 'Network Engineer',
+        name:'Rajaul Uddin',
+        img : rajaul
+        
+    },
+    {
+        id: 5,
+        title : 'Product Designer',
+        name:'Rukesh Khatiwada',
+        img : rukesh
+    }
 ];
 export default bannerList;
