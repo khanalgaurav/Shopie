@@ -4,6 +4,7 @@ import { FaStarHalf } from 'react-icons/fa6'
 import { GoHeart, GoHeartFill } from 'react-icons/go'
 import { BsEye, BsEyeFill } from 'react-icons/bs'
 import { useGlobalContext } from './ShopContext'
+import { useItemContext } from './ItemsContext'
 
 const ItemCard = ({
     name,
@@ -16,6 +17,7 @@ const ItemCard = ({
     handleWishlist,
     id,
     rating,
+    handleCart,
 }) => {
     const { allProducts, isLoading, error, wish, watchLater } =
         useGlobalContext()
@@ -43,7 +45,10 @@ const ItemCard = ({
                     {watchLater[id] ? <BsEyeFill /> : <BsEye />}
                 </div>
                 <div>
-                    <button className="transition-all ease-in-out duration-500 text-center w-full border border-black absolute group-hover:-translate-y-0 translate-y-10 bottom-0 bg-black text-white py-1 rounded-b-md">
+                    <button
+                        onClick={handleCart}
+                        className="transition-all ease-in-out duration-500 text-center w-full border border-black absolute group-hover:-translate-y-0 translate-y-10 bottom-0 bg-black text-white py-1 rounded-b-md"
+                    >
                         Add To Cart
                     </button>
                 </div>

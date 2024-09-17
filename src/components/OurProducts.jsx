@@ -12,7 +12,7 @@ const OurProducts = () => {
         watchLater,
         setWatchLater,
     } = useGlobalContext()
-    const { handleWatchLater, handleWishlist } = useItemContext()
+    const { handleWatchLater, handleWishlist, handleCart } = useItemContext()
     const ourProducts = allProducts.slice(9, 19)
 
     return (
@@ -60,6 +60,7 @@ const OurProducts = () => {
                                 }
                                 id={item.id}
                                 rating={Math.floor(item.rating)}
+                                handleCart={() => handleCart(item.id)}
                             />
                         </div>
                     )

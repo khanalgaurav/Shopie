@@ -26,7 +26,7 @@ const FlashSales = () => {
         watchLater,
         setWatchLater,
     } = useGlobalContext()
-    const { handleWishlist, handleWatchLater } = useItemContext()
+    const { handleWishlist, handleWatchLater, handleCart } = useItemContext()
 
     const flashProducts = allProducts.slice(5, 14)
 
@@ -138,6 +138,7 @@ const FlashSales = () => {
                                 }
                                 id={item.id}
                                 rating={Math.floor(item.rating)}
+                                handleCart={() => handleCart(item.id)}
                             />
                         </div>
                     )
