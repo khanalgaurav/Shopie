@@ -60,7 +60,9 @@ const OurProducts = () => {
                                 }
                                 id={item.id}
                                 rating={Math.floor(item.rating)}
-                                handleCart={() => handleCart(item.id)}
+                                handleCart={() =>
+                                    handleCart(item.id, item.price)
+                                }
                             />
                         </div>
                     )
