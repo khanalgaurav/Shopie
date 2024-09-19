@@ -11,6 +11,7 @@ import { IoIosStarOutline } from 'react-icons/io'
 import { MdOutlineCancel } from 'react-icons/md'
 import { TbLogout2 } from 'react-icons/tb'
 import { useGlobalContext } from './ShopContext'
+import { useItemContext } from './ItemsContext'
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -19,6 +20,7 @@ const Navbar = () => {
         setToggleMenu(!toggleMenu)
     }
     const [showUserDropdown, setShowUserDropdown] = useState(false)
+    const { cartItems, wishListItems } = useItemContext()
     return (
         <nav className="border-b border-gray-300 md:pt-8 flex items-center py-2 md:pb-3 overflow-hidden">
             <div className="flex md:mx-32 justify-between items-center px-1 w-screen">
@@ -125,10 +127,20 @@ const Navbar = () => {
 
                         <div className="md:hidden flex mt-10 justify-around text-white text-5xl gap-3 items-center">
                             <NavLink onClick={handleMenu} to={'/wishlist'}>
-                                <CiHeart />
+                                <div className="relative">
+                                    <CiHeart />
+                                    <p className="bg-white text-orange absolute top-0 -right-1 w-6 h-6 flex justify-center items-center rounded-full text-lg ">
+                                        {wishListItems.length}
+                                    </p>
+                                </div>
                             </NavLink>
                             <NavLink onClick={handleMenu} to={'/cart'}>
-                                <IoCartOutline />
+                                <div className="relative">
+                                    <IoCartOutline />
+                                    <p className="bg-white text-orange absolute top-0 -right-1 w-6 h-6 flex justify-center items-center rounded-full text-lg ">
+                                        {cartItems.length}
+                                    </p>
+                                </div>
                             </NavLink>
                             <FiUser
                                 className={`${isLoggedIn ? 'block' : 'hidden'}`}
@@ -222,10 +234,20 @@ const Navbar = () => {
                     </div>
                     <div className="md:flex hidden text-3xl gap-3 items-center">
                         <NavLink to={'/wishlist'}>
-                            <CiHeart />
+                            <div className="relative">
+                                <CiHeart />
+                                <p className="bg-red-500 absolute top-0 -right-1 w-4 h-4 flex justify-center items-center rounded-full text-xs ">
+                                    {wishListItems.length}
+                                </p>
+                            </div>
                         </NavLink>
                         <NavLink to={'/cart'}>
-                            <IoCartOutline />
+                            <div className="relative">
+                                <IoCartOutline />
+                                <p className="bg-red-500 absolute top-0 -right-1 w-4 h-4 flex justify-center items-center rounded-full text-xs ">
+                                    {cartItems.length}
+                                </p>
+                            </div>
                         </NavLink>
                         <FiUser
                             className={`${isLoggedIn ? 'block' : 'hidden'}`}
