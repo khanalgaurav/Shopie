@@ -123,6 +123,7 @@ const About = () => {
                 {employee.map((item, i) => {
                     return (
                         <EmployeeCard
+                            key={i}
                             name={item.name}
                             image={item.img}
                             title={item.title}
