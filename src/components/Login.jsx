@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import loginImage from '../assets/login-image.png'
 import { FcGoogle } from 'react-icons/fc'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useGlobalContext } from './ShopContext'
 const LoginSignup = () => {
+    const navigate = useNavigate()
     const [loginStatus, setLoginStatus] = useState(true)
-    const [userEmail, setUserEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [userName, setUserName] = useState('')
+
+    const {
+        isLoggedIn,
+        setIsLoggedIn,
+        userEmail,
+        setUserEmail,
+        password,
+        setPassword,
+        userName,
+        setUserName,
+    } = useGlobalContext()
     var validRegex =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
     let numberRegex = /^[0-9]{10}$/
@@ -28,6 +38,9 @@ const LoginSignup = () => {
         } else {
             setPassword('')
             setUserEmail('')
+            setIsLoggedIn(true)
+            alert('Login Sucess')
+            navigate('/')
             return true
         }
     }
@@ -50,11 +63,12 @@ const LoginSignup = () => {
         } else {
             setUserEmail('')
             setPassword('')
-            setUserName('')
+            setIsLoggedIn(true)
+            navigate('/')
+            alert('Sucessfully signed up')
             return true
         }
     }
-
     return (
         <section className="md:my-8 my-3 md:flex-row flex-col flex gap-10 md:gap-32 items-center">
             <div className="">
@@ -69,6 +83,15 @@ const LoginSignup = () => {
                     <h1 className="text-4xl mb-1">Login To Shopie</h1>
                     <h5>Enter your details below</h5>
                     <form className="flex flex-col mt-12" action="">
+                        <input
+                            onChange={(e) => {
+                                setUserName(e.target.value)
+                            }}
+                            value={userName}
+                            className="border-b py-1 mb-10 border-gray-400 focus:outline-none"
+                            type="text"
+                            placeholder="Username"
+                        />
                         <input
                             onChange={(e) => {
                                 setUserEmail(e.target.value)

@@ -11,6 +11,11 @@ const AppContextProvider = ({ children }) => {
     const [error, setError] = useState()
     const [wish, setWish] = useState({})
     const [watchLater, setWatchLater] = useState({})
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+    const [userEmail, setUserEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [userName, setUserName] = useState('')
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -57,6 +62,14 @@ const AppContextProvider = ({ children }) => {
                 watchLater,
                 setWatchLater,
                 categories,
+                isLoggedIn,
+                setIsLoggedIn,
+                userEmail,
+                setUserEmail,
+                password,
+                setPassword,
+                userName,
+                setUserName,
             }}
         >
             {children}

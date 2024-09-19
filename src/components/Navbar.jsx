@@ -2,16 +2,23 @@ import React, { useState } from 'react'
 import { CiSearch } from 'react-icons/ci'
 import { CiHeart } from 'react-icons/ci'
 import { IoCartOutline } from 'react-icons/io5'
-import { NavLink } from 'react-router-dom'
-import { IoIosMenu } from 'react-icons/io'
+import { Link, NavLink } from 'react-router-dom'
+import { IoIosLocate, IoIosMenu } from 'react-icons/io'
 import { RxCross2 } from 'react-icons/rx'
+import { FiUser } from 'react-icons/fi'
+import { FiShoppingBag } from 'react-icons/fi'
+import { IoIosStarOutline } from 'react-icons/io'
+import { MdOutlineCancel } from 'react-icons/md'
+import { TbLogout2 } from 'react-icons/tb'
+import { useGlobalContext } from './ShopContext'
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(false)
-
+    const { setIsLoggedIn, isLoggedIn, userName } = useGlobalContext()
     const handleMenu = () => {
         setToggleMenu(!toggleMenu)
     }
+    const [showUserDropdown, setShowUserDropdown] = useState(false)
     return (
         <nav className="border-b border-gray-300 md:pt-8 flex items-center py-2 md:pb-3 overflow-hidden">
             <div className="flex md:mx-32 justify-between items-center px-1 w-screen">
@@ -87,10 +94,35 @@ const Navbar = () => {
                                 }`
                             }
                         >
-                            <li className="md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]">
+                            <li
+                                className={`${
+                                    isLoggedIn ? 'hidden' : 'block'
+                                } md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]`}
+                            >
                                 Signin
                             </li>
                         </NavLink>
+
+                        <NavLink
+                            onClick={handleMenu}
+                            to={'/user/account'}
+                            className={({ isActive }) =>
+                                `${
+                                    isActive
+                                        ? 'text-black md:text-orange'
+                                        : 'text-white md:text-black'
+                                }`
+                            }
+                        >
+                            <li
+                                className={`${
+                                    isLoggedIn ? 'block' : 'hidden'
+                                } md:border-none border-b-2 text-center pt-6 border-[#f5f5f5]`}
+                            >
+                                {userName}
+                            </li>
+                        </NavLink>
+
                         <div className="md:hidden flex mt-10 justify-around text-white text-5xl gap-3 items-center">
                             <NavLink onClick={handleMenu} to={'/wishlist'}>
                                 <CiHeart />
@@ -98,6 +130,83 @@ const Navbar = () => {
                             <NavLink onClick={handleMenu} to={'/cart'}>
                                 <IoCartOutline />
                             </NavLink>
+                            <FiUser
+                                className={`${isLoggedIn ? 'block' : 'hidden'}`}
+                                onClick={() =>
+                                    setShowUserDropdown(!showUserDropdown)
+                                }
+                            />
+                            <ul
+                                className={`${
+                                    showUserDropdown ? 'block' : 'hidden'
+                                } absolute text-sm bg-black/30 backdrop-blur-lg text-white bottom-14 right-0 p-4 rounded-md z-10`}
+                            >
+                                <Link to={'/user/account'}>
+                                    <li
+                                        onClick={() => {
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            ),
+                                                handleMenu()
+                                        }}
+                                        className="flex items-center my-4 hover:cursor-pointer hover:text-black gap-4"
+                                    >
+                                        <FiUser /> Manage My Account
+                                    </li>
+                                </Link>
+                                <Link to={'/user/order'}>
+                                    <li
+                                        onClick={() => {
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            ),
+                                                handleMenu()
+                                        }}
+                                        className="flex items-center my-4 hover:cursor-pointer hover:text-black gap-4"
+                                    >
+                                        <FiShoppingBag /> My Order
+                                    </li>
+                                </Link>
+                                <Link to={'/user/cancellations'}>
+                                    <li
+                                        onClick={() => {
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            ),
+                                                handleMenu()
+                                        }}
+                                        className="flex items-center my-4 hover:cursor-pointer hover:text-black gap-4"
+                                    >
+                                        <MdOutlineCancel /> My Cancellations
+                                    </li>
+                                </Link>
+                                <Link to={'/user/reviews'}>
+                                    <li
+                                        onClick={() => {
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            ),
+                                                handleMenu()
+                                        }}
+                                        className="flex items-center my-4 hover:cursor-pointer hover:text-black gap-4"
+                                    >
+                                        <IoIosStarOutline /> My Reviews
+                                    </li>
+                                </Link>
+                                <Link to={'/login'}>
+                                    <li
+                                        onClick={() => {
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            ),
+                                                handleMenu()
+                                        }}
+                                        className="flex items-center my-4 hover:cursor-pointer hover:text-black gap-4"
+                                    >
+                                        <TbLogout2 /> Logout
+                                    </li>
+                                </Link>
+                            </ul>
                         </div>
                     </ul>
                 </section>
@@ -118,6 +227,71 @@ const Navbar = () => {
                         <NavLink to={'/cart'}>
                             <IoCartOutline />
                         </NavLink>
+                        <FiUser
+                            className={`${isLoggedIn ? 'block' : 'hidden'}`}
+                            onClick={() =>
+                                setShowUserDropdown(!showUserDropdown)
+                            }
+                        />
+                        <ul
+                            className={`${
+                                showUserDropdown ? 'block' : 'hidden'
+                            } absolute text-lg bg-black/30 backdrop-blur-lg text-white top-[120px] right-32 p-4 rounded-md z-10`}
+                        >
+                            <Link to={'/user/account'}>
+                                <li
+                                    onClick={() =>
+                                        setShowUserDropdown(!showUserDropdown)
+                                    }
+                                    className="flex items-center my-1 hover:cursor-pointer hover:text-orange gap-4"
+                                >
+                                    <FiUser /> Manage My Account
+                                </li>
+                            </Link>
+                            <Link to={'/user/order'}>
+                                <li
+                                    onClick={() =>
+                                        setShowUserDropdown(!showUserDropdown)
+                                    }
+                                    className="flex items-center my-1 hover:cursor-pointer hover:text-orange gap-4"
+                                >
+                                    <FiShoppingBag /> My Order
+                                </li>
+                            </Link>
+                            <Link to={'/user/cancellations'}>
+                                <li
+                                    onClick={() =>
+                                        setShowUserDropdown(!showUserDropdown)
+                                    }
+                                    className="flex items-center my-1 hover:cursor-pointer hover:text-orange gap-4"
+                                >
+                                    <MdOutlineCancel /> My Cancellations
+                                </li>
+                            </Link>
+                            <Link to={'/user/reviews'}>
+                                <li
+                                    onClick={() =>
+                                        setShowUserDropdown(!showUserDropdown)
+                                    }
+                                    className="flex items-center my-1 hover:cursor-pointer hover:text-orange gap-4"
+                                >
+                                    <IoIosStarOutline /> My Reviews
+                                </li>
+                            </Link>
+                            <Link to={'/login'}>
+                                <li
+                                    onClick={() => {
+                                        setIsLoggedIn(false),
+                                            setShowUserDropdown(
+                                                !showUserDropdown
+                                            )
+                                    }}
+                                    className="flex items-center my-1 hover:cursor-pointer hover:text-orange gap-4"
+                                >
+                                    <TbLogout2 /> Logout
+                                </li>
+                            </Link>
+                        </ul>
                     </div>
                 </section>
                 <div onClick={handleMenu} className="block md:hidden">
