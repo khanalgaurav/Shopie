@@ -37,7 +37,6 @@ const LoginSignup = () => {
             return false
         } else {
             setPassword('')
-            setUserEmail('')
             setIsLoggedIn(true)
             alert('Login Sucess')
             navigate('/')
@@ -61,7 +60,6 @@ const LoginSignup = () => {
                 'The Password must Contain:\n Minimum eight characters \n At least one uppercase letter\n One lowercase letter\n One number \n One special character'
             )
         } else {
-            setUserEmail('')
             setPassword('')
             setIsLoggedIn(true)
             navigate('/')
