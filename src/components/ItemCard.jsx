@@ -5,6 +5,7 @@ import { GoHeart, GoHeartFill } from 'react-icons/go'
 import { BsEye, BsEyeFill } from 'react-icons/bs'
 import { useGlobalContext } from './ShopContext'
 import { useItemContext } from './ItemsContext'
+import { Link } from 'react-router-dom'
 
 const ItemCard = ({
     name,
@@ -53,23 +54,25 @@ const ItemCard = ({
                     </button>
                 </div>
             </section>
-            <section className="flex flex-col gap-1 my-1">
-                <h2 className="text-lg font-bold">
-                    {name.slice(0, 19) + `...`}
-                </h2>
-                <p className="flex gap-5">
-                    <span className="text-orange text-lg font-bold">
-                        ${price}
-                    </span>
-                    <span className="line-through text-gray-500 text-lg font-bold">
-                        ${marketPrice}
-                    </span>
-                </p>
-                <div className="flex items-center">
-                    {stars}
-                    <p className="text-gray-500">({reviews})</p>
-                </div>
-            </section>
+            <Link to={`/product/${id}`}>
+                <section className="flex flex-col gap-1 my-1">
+                    <h2 className="text-lg font-bold">
+                        {name.slice(0, 19) + `...`}
+                    </h2>
+                    <p className="flex gap-5">
+                        <span className="text-orange text-lg font-bold">
+                            ${price}
+                        </span>
+                        <span className="line-through text-gray-500 text-lg font-bold">
+                            ${marketPrice}
+                        </span>
+                    </p>
+                    <div className="flex items-center">
+                        {stars}
+                        <p className="text-gray-500">({reviews})</p>
+                    </div>
+                </section>
+            </Link>
         </article>
     )
 }
